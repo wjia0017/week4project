@@ -1,8 +1,11 @@
 var express = require('express');
-var router = require('./router.js'); 
-var app = express();
 let bodyParser = require('body-parser');
 
+var app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 //setup the view Engine
 app.engine('html', require('ejs').renderFile);
@@ -13,10 +16,39 @@ app.use(express.static('images'));
 app.use(express.static('css'));
 app.use(express.static('view'));
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+let showView = __dirname +"/views/";
 
-app.use('/', router);
+let db = [];
+
+
+/*HomePage*/
+router.get('/', function(req,res){//function have two parameter, 
+    res.sendFile(showView + 'index.html');
+});
+
+/*Task*/
+router.get('/newTask', function(req,res){
+    res.sendFile(showView +'NewTask.html');
+});
+
+/*List Task*/
+router.get('/listTasks', function(req,res){
+    res.render('listTasks.html', {tasks : db});
+});
+
+router.post('/addTask', function (req, res) {
+let data = {
+    taskName: req.body.taskName,
+    dueDate: req.body.dueDate,
+    taskDesc: req.body.taskDesc,
+
+};
+
+db.push(data);
+res.sendFile(showView + 'NewTask.html');
+
+});
+
+
 app.listen("8080");
 console.log("Server running at http://localhost:8080");

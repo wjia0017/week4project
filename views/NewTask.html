@@ -7,18 +7,20 @@
 
 <body>
     <h1>
-        <a href = "http://localhost:8080/">Home</a> 
-        <a href = "http://localhost:8080/listTasks">List Tasks</a>
+        <a href = "/">Home</a> 
+        <a href = "listTasks">List Tasks</a>
     </h1>
     <form action= "/addTask" method = "POST">
-        Task Name:
+        <label for = "taskName"> taskName :</label>
         <input type = "text" name= "taskName" /></br>
-        Due Date:
+
+        <label for = "dueDate"> dueDate :</label>
         <input type = "text" name= "dueDate" /></br>
-        Task Desc:
+        
+        <label for = "taskDesc"> taskDesc:</label>
         <input type = "text" name= "taskDesc" /></br>
 
-        <button>Sumit</button>
+        <button>Submit</button>
         
     </form>
 </body>
