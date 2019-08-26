@@ -22,21 +22,21 @@ let db = [];
 
 
 /*HomePage*/
-router.get('/', function(req,res){//function have two parameter, 
+app.get('/', function(req,res){//function have two parameter, 
     res.sendFile(showView + 'index.html');
 });
 
 /*Task*/
-router.get('/newTask', function(req,res){
+app.get('/newTask', function(req,res){
     res.sendFile(showView +'NewTask.html');
 });
 
 /*List Task*/
-router.get('/listTasks', function(req,res){
+app.get('/listTasks', function(req,res){
     res.render('listTasks.html', {tasks : db});
 });
 
-router.post('/addTask', function (req, res) {
+app.post('/addTask', function (req, res) {
 let data = {
     taskName: req.body.taskName,
     dueDate: req.body.dueDate,
