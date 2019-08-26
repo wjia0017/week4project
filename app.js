@@ -14,7 +14,6 @@ app.set('view engine', 'html');
 //setup the static assets directories
 app.use(express.static('images'));
 app.use(express.static('css'));
-app.use(express.static('view'));
 
 let showView = __dirname +"/views/";
 
@@ -23,17 +22,17 @@ let db = [];
 
 /*HomePage*/
 app.get('/', function(req,res){//function have two parameter, 
-    res.sendFile(showView + 'index.html');
+    res.sendFile(showView + "index.html");
 });
 
 /*Task*/
 app.get('/newTask', function(req,res){
-    res.sendFile(showView +'NewTask.html');
+    res.sendFile(showView +"NewTask.html");
 });
 
 /*List Task*/
 app.get('/listTasks', function(req,res){
-    res.render('listTasks.html', {tasks : db});
+    res.render("listTasks.html", {tasks : db});
 });
 
 app.post('/addTask', function (req, res) {
@@ -45,7 +44,7 @@ let data = {
 };
 
 db.push(data);
-res.sendFile(showView + 'NewTask.html');
+res.sendFile(showView + "NewTask.html");
 
 });
 
