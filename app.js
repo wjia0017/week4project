@@ -22,17 +22,20 @@ let db = [];
 
 /*HomePage*/
 app.get('/', function(req,res){//function have two parameter, 
+    console.log(showView);
     res.sendFile(showView + "index.html");
 });
 
 /*Task*/
 app.get('/newTask', function(req,res){
+    console.log(showView);
     res.sendFile(showView +"NewTask.html");
 });
 
 /*List Task*/
 app.get('/listTasks', function(req,res){
-    res.render("listTasks.html", {tasks : db});
+    console.log(showView);
+    res.render("listTasks", {tasks : db});
 });
 
 app.post('/addTask', function (req, res) {
