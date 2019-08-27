@@ -7,6 +7,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+//ssS
 //setup the view Engine
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
